@@ -13,7 +13,6 @@
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Vinícius Andrade • Developer</title>
-			<link href="https://db.onlinewebfonts.com/c/3a81af19a7f1e5f8dbe8ebe7f6abc28f?family=Cortado+Script+Web+Regular" rel="stylesheet">
 			<script type="text/javascript" src="./libs/CustomEase.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/Draggable.min.js"></script>
@@ -79,16 +78,6 @@
 							url('./fonts/MADEOuterSans-Black.ttf.eot?#iefix') format('embedded-opentype'); 
 					font-weight: 900;
 					font-style: normal;
-				}
-
-
-
-				@font-face{
-					font-family: "Cortado Script Web Regular";
-					src: url("./fonts/Cortado-Script-Web-Regular.woff")format("woff");
-					font-weight: normal;
-					font-style: normal;
-					font-display: swap;
 				}
 			</style>
 			<style>
@@ -408,6 +397,8 @@
 											<div class='w-full h-full overflow-auto scroll-smooth'>
 												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
 													<button 
+														onmouseenter="cursorEnter('')"
+														onmouseleave="cursorLeave()"
 														onclick="deselectDivision()"
 														style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0VFQjAxODtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K) no-repeat 50% 50%"
 														class='outline-none relative h-[48px] w-[48px] text-[15px] [filter:drop-shadow(2px_2px_0px_#000)] hover:[filter:drop-shadow(0px_0px_0px_#000)] pointer-events-auto hover:rotate-6 transition-all'
@@ -494,6 +485,8 @@
 											<div class='w-full h-full overflow-auto scroll-smooth'>
 												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
 													<button 
+														onmouseenter="cursorEnter('')"
+														onmouseleave="cursorLeave()"
 														onclick="deselectDivision()"
 														style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0VFQjAxODtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K) no-repeat 50% 50%"
 														class='outline-none relative h-[48px] w-[48px] text-[15px] [filter:drop-shadow(2px_2px_0px_#000)] hover:[filter:drop-shadow(0px_0px_0px_#000)] pointer-events-auto hover:rotate-6 transition-all'
