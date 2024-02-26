@@ -257,10 +257,12 @@
 
 				.division {
 					&[data-division-active="true"] {
+						.element-title:has(.element-title-svg text) {
+							filter: drop-shadow(-1px -1px 0px #000) drop-shadow(4px 4px 0px #000) drop-shadow(-1px 1px 0px #000) drop-shadow(1px -1px 0px #000);
+						}
 						.element-title-svg text {
 							fill: white;
 							stroke: transparent;
-							filter: drop-shadow(-1px -1px 0px #000) drop-shadow(4px 4px 0px #000) drop-shadow(-1px 1px 0px #000) drop-shadow(1px -1px 0px #000);
 						}
 
 						.element-subtitle span {
