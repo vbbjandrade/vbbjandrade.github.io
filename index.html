@@ -349,13 +349,10 @@
 									</label>
 									<ul class='[&>li>a]:transition-transform fixed inset-0 bg-[#c9171e] translate-y-full [transition:transform_cubic-bezier(0.4,0,0.2,1)_300ms] flex flex-col gap-[15px] justify-center items-center pt-[15px]'>
 										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(0)">
-											<a style="--order: 3;" class="inline-flex w-full h-full origin-right" href="#aboutContent">About</a>
+											<a style="--order: 2;" class="inline-flex w-full h-full origin-right" href="#aboutContent">About</a>
 										</li>
 										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(1)">
-											<a style="--order: 2;" class="inline-flex w-full h-full origin-right" href="#aboutContent">Work</a>
-										</li>
-										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"]' onclick="selectDivision(2)">
-											<a style="--order: 1;" class="inline-flex w-full h-full origin-right" href="#aboutContent">Blog</a>
+											<a style="--order: 1;" class="inline-flex w-full h-full origin-right" href="#aboutContent">Work</a>
 										</li>
 										<li class="mt-[20px]">
 												<a 
@@ -421,9 +418,9 @@
 												<section id="aboutContent" class="w-full bg-[#ede4cd] px-[10vw] max-sm:px-[20px] pb-[60px]">
 													<div class="bg-white px-[50px] py-[70px] max-sm:px-[20px] max-sm:py-[50px] text-[15px] [letter-spacing:-.01em]">
 														<div class="grid items-start grid-cols-[minmax(0,280px)_1fr] max-lg:grid-cols-1">
-															<div class="[&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
-																<img width="100%" height="100%" class="relative z-[1] saturate-0 transition-all" src="https://avatars.githubusercontent.com/u/43252803" />
-																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black transition-all"></div>
+															<div class="[&>*]:transition-all [&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<img width="100%" height="100%" class="relative z-[1] saturate-0" src="https://avatars.githubusercontent.com/u/43252803" />
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
 															</div>
 															<div>
 																<div class="mb-8">
@@ -507,29 +504,92 @@
 													<span>SCROLL DOWN</span>
 												</a>
 												<section id="workContent" class="w-full bg-[#ede4cd] px-[10vw] max-sm:px-[20px] pb-[60px]">
-													<div class="bg-white px-[50px] py-[70px] max-sm:px-[20px] max-sm:py-[50px] text-[15px] [letter-spacing:-.01em]">
-														<div class="grid items-start grid-cols-[minmax(0,280px)_1fr] max-lg:grid-cols-1">
-															<div class="[&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
-																<img width="100%" height="100%" class="relative z-[1] saturate-0 transition-all" src="https://avatars.githubusercontent.com/u/43252803" />
-																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black transition-all"></div>
+													<div class="bg-white px-[50px] py-[70px] max-sm:px-[20px] max-sm:py-[50px] text-[15px] [letter-spacing:-.01em] grid grid-cols-2 max-lg:grid-cols-1 gap-y-[60px] [&>div]:max-lg:mt-0 [&>div:nth-child(2n)]:mt-[150px]">
+
+														<div>
+															<div class="[&>*]:transition-all [&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<!-- <img width="100%" height="100%" class="relative z-[1] saturate-0" src="" /> -->
+																<div class='w-full aspect-square bg-zinc-300 relative z-[1] flex items-center justify-center'>SOON</div>
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
 															</div>
 															<div>
 																<div class="mb-8">
-																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Vinícius Andrade</h4>
-																	<span class="mt-4 text-[#111]">Frontend Developer @ <a class="underline hover:no-underline" href="https://www.khipo.ai/">Khipo</a></span>
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Vizz.it</h4>
+																	<span class="mt-4 text-[#111]">TypeScript, Next.js, Turborepo, TRPC, Prisma, Express</span>
 																</div>
 																<p class="text-[#7E7E7E]">
-																	<b id="yearsOld"></b> y/o based in São Paulo, Brazil. Coding professionally for <b id="codingFor"></b> and counting!
-																	Fascinated by interfaces, interactions, customization and reverse engineering stuff.
-																	Personal love for UI Component Libraries, Micro Frontends, Developer experience and CSS witchcraft.
-																	Always keeping an eye out for new and exciting technologies, but most familiar with the React ecosystem.
+																	WIP - Single page "link tree" with an asynchronous chat. Receive email notifications for new messages and replies.
+																</p>
+															</div>
+															<ul class="flex gap-4 flex-wrap mt-16">
+																<li><a class="underline hover:no-underline" href="https://vizz.it">Website</a></li>
+															</ul>
+														</div>
+
+														<div>
+															<div class="[&>*]:transition-all [&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<!-- <img width="100%" height="100%" class="relative z-[1] saturate-0" src="" /> -->
+																<div class='w-full aspect-square bg-zinc-300 relative z-[1] flex items-center justify-center'>SOON</div>
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
+															</div>
+															<div>
+																<div class="mb-8">
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Event Companion</h4>
+																	<span class="mt-4 text-[#111]">TypeScript, Next.js, Prisma, Express</span>
+																</div>
+																<p class="text-[#7E7E7E]">
+																	Proof of Concept - Large-scale event management solution + Client WebApp for navigating and interacting with the event.
+																	B2B: Create and manage marketing activations, ads, scheduling and notifications for you and your partners. 
+																	B2C: Easily navigate through and obtain relevant information and scheduling about the venue in a single application. Set meeting places with your friends, obtain and trade badges and other collectibles.
 																</p>
 																<ul class="flex gap-4 flex-wrap mt-16">
-																	<li><a class="underline hover:no-underline" href="https://github.com/vbbjandrade">GitHub</a></li>
-																	<li><a class="underline hover:no-underline" href="https://www.linkedin.com/in/viniciusbbja/">LinkedIn</a></li>
+																	<li><a class="underline hover:no-underline" href="https://github.com/rafapignataro/event-companion-app">Client App</a></li>
+																	<li><a class="underline hover:no-underline" href="https://github.com/rafapignataro/event-companion-admin">Admin App</a></li>
+																	<li><a class="underline hover:no-underline" href="https://github.com/rafapignataro/event-companion-api">API</a></li>
 																</ul>
 															</div>
 														</div>
+
+														<div>
+															<div class="[&>*]:transition-all [&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<!-- <img width="100%" height="100%" class="relative z-[1] saturate-0" src="" /> -->
+																<div class='w-full aspect-square bg-zinc-300 relative z-[1] flex items-center justify-center'>SOON</div>
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
+															</div>
+															<div>
+																<div class="mb-8">
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>DevBoard</h4>
+																	<span class="mt-4 text-[#111]">JavaScript, HTML, CSS, Node, MySql</span>
+																</div>
+																<p class="text-[#7E7E7E]">
+																	Proof of Concept - Learning assistance platform for tutors and students. Create, manage and join classes, ask and answer questions in an open manner. 
+																</p>
+																<ul class="flex gap-4 flex-wrap mt-16">
+																	<li><a class="underline hover:no-underline" href="https://github.com/LucasZillig/Projeto_Interdisciplinar_3">GitHub</a></li>
+																</ul>
+															</div>
+														</div>
+
+														<div>
+															<div class="[&>*]:transition-all [&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<!-- <img width="100%" height="100%" class="relative z-[1] saturate-0" src="" /> -->
+																<div class='w-full aspect-square bg-zinc-300 relative z-[1] flex items-center justify-center'>SOON</div>
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
+															</div>
+															<div>
+																<div class="mb-8">
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Pirate Curse</h4>
+																	<span class="mt-4 text-[#111]">JavaScript, HTML, CSS, Phaser.js</span>
+																</div>
+																<p class="text-[#7E7E7E]">
+																	A pirate themed shoot'em up game featuring randomized enemy spawning and cool visuals.
+																</p>
+																<ul class="flex gap-4 flex-wrap mt-16">
+																	<li><a class="underline hover:no-underline" href="https://github.com/rafapignataro/pirate-curse">GitHub</a></li>
+																</ul>
+															</div>
+														</div>
+
 													</div>
 												</section>
 											</div>
