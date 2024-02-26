@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+<html					
+	lang="pt-br" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	data-cursor-hovering="false"
+	data-cursor-disabled="false"
+	data-cursor-dragging="false" 
+	data-division-selected="false"
+>
+	<head>
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>Vinícius Andrade • Developer</title>
+			<link href="https://db.onlinewebfonts.com/c/3a81af19a7f1e5f8dbe8ebe7f6abc28f?family=Cortado+Script+Web+Regular" rel="stylesheet">
+			<script type="text/javascript" src="./libs/CustomEase.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/Draggable.min.js"></script>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<style>
+				@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+				@font-face {
+					font-family: 'Magic-Frankie';
+					src:url('./fonts/Magic-Frankie.ttf.woff') format('woff'),
+							url('./fonts/Magic-Frankie.ttf.svg#Magic-Frankie') format('svg'),
+							url('./fonts/Magic-Frankie.ttf.eot'),
+							url('./fonts/Magic-Frankie.ttf.eot?#iefix') format('embedded-opentype'); 
+					font-weight: normal;
+					font-style: normal;
+			}
+
+				@font-face {
+						font-family: 'MADEOuterSans';
+						src:url('./fonts/MADEOuterSans.ttf.woff') format('woff'),
+								url('./fonts/MADEOuterSans.ttf.svg#MADEOuterSans') format('svg'),
+								url('./fonts/MADEOuterSans.ttf.eot'),
+								url('./fonts/MADEOuterSans.ttf.eot?#iefix') format('embedded-opentype'); 
+						font-weight: normal;
+						font-style: normal;
+				}
+
+				@font-face {
+						font-family: 'MADEOuterSans';
+						src:url('./fonts/MADEOuterSans-Light.ttf.woff') format('woff'),
+								url('./fonts/MADEOuterSans-Light.ttf.svg#MADEOuterSans-Light') format('svg'),
+								url('./fonts/MADEOuterSans-Light.ttf.eot'),
+								url('./fonts/MADEOuterSans-Light.ttf.eot?#iefix') format('embedded-opentype'); 
+						font-weight: 300;
+						font-style: normal;
+				}
+
+				@font-face {
+						font-family: 'MADEOuterSans';
+						src:url('./fonts/MADEOuterSans-Medium.ttf.woff') format('woff'),
+								url('./fonts/MADEOuterSans-Medium.ttf.svg#MADEOuterSans-Medium') format('svg'),
+								url('./fonts/MADEOuterSans-Medium.ttf.eot'),
+								url('./fonts/MADEOuterSans-Medium.ttf.eot?#iefix') format('embedded-opentype'); 
+						font-weight: 500;
+						font-style: normal;
+				}
+
+				@font-face {
+					font-family: 'MADEOuterSans-Bold';
+					src:url('./fonts/MADEOuterSans-Bold.ttf.woff') format('woff'),
+							url('./fonts/MADEOuterSans-Bold.ttf.svg#MADEOuterSans-Bold') format('svg'),
+							url('./fonts/MADEOuterSans-Bold.ttf.eot'),
+							url('./fonts/MADEOuterSans-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
+					font-weight: 700;
+					font-style: normal;
+				}
+
+				@font-face {
+					font-family: 'MADEOuterSans';
+					src:url('./fonts/MADEOuterSans-Black.ttf.woff') format('woff'),
+							url('./fonts/MADEOuterSans-Black.ttf.svg#MADEOuterSans-Black') format('svg'),
+							url('./fonts/MADEOuterSans-Black.ttf.eot'),
+							url('./fonts/MADEOuterSans-Black.ttf.eot?#iefix') format('embedded-opentype'); 
+					font-weight: 900;
+					font-style: normal;
+				}
+
+
+
+				@font-face{
+					font-family: "Cortado Script Web Regular";
+					src: url("./fonts/Cortado-Script-Web-Regular.woff")format("woff");
+					font-weight: normal;
+					font-style: normal;
+					font-display: swap;
+				}
+			</style>
+			<style>
+				::selection {
+					color: #c9171e;
+					background: transparent;
+				}
+				:root {
+					--divisionHeight: 50%;
+				}
+				@media(max-width: 768px) {
+					:root {
+						--divisions: 0;
+						--divisionHeight: 60%;
+						--cursorText: "";
+					}
+				}
+
+				@keyframes flip {
+					0% {
+						transform: scaleX(1) scaleY(1);
+					}
+					25% {
+						transform: scaleX(1) scaleY(-1);
+					}
+					50% {
+						transform: scaleX(-1) scaleY(-1);
+					}
+					75% {
+						transform: scaleX(-1) scaleY(1);
+					}
+					100% {
+						transform: scaleX(-1) scaleY(1);
+					}
+				}
+
+				@keyframes rotate {
+					0% {
+						transform: rotate(0deg);
+					}
+					25% {
+					}
+					50% {
+					}
+					75% {
+					}
+					100% {
+					}
+				}
+
+				@keyframes carousel {
+					0% {
+						content: "bolognini";
+					}
+					25% {
+						content: "beozzo";
+					}
+					50% {
+						content: "junqueira";
+					}
+					75% {
+						content: "andrade.";
+					}
+				}
+
+				@keyframes sliderEnter {
+					0% {
+						opacity: 0;
+						transform: translate(25vw);
+					}
+					100% {
+						opacity: 1;
+						transform: translate(0vw);
+					}
+				}
+
+				@keyframes zoomIn {
+					0% {
+						position: absolute;
+						height: var(--divisionHeight);
+						width: calc(100% - 10vw);
+					}
+					20% {
+						height: var(--divisionHeight);
+						width: calc(100% - 10vw);
+					}
+					40% {
+						height: calc(var(--divisionHeight) - 5%);
+						width: calc(95% - 10vw);
+					}
+					90% {
+						position: absolute;
+						height: 100%;
+						width: 100vw;
+					}
+				}
+
+				@keyframes zoomOut {
+					0% {
+						z-index: 1;
+						position: absolute;
+						height: 100%;
+						width: 100vw;
+					}
+					35% {
+						height: 100%;
+						width: 100vw;
+					}
+					50% {
+						height: 105%;
+						width: 105vw;
+					}
+					90% {
+						height: var(--divisionHeight);
+						width: calc(100% - 10vw);
+					}
+					100% {
+						z-index: 1;
+						width: calc(100% - 10vw);
+						position: absolute;
+					}
+				}
+
+				html {
+					font-size: 62.5%;
+
+					&[data-division-selected="true"] {
+						.ui-overlay {
+							z-index: 0;
+							transition-delay: 0ms;
+						}
+					}
+
+					&[data-cursor-disabled="true"] {
+						#cursorWrapper {
+							opacity: 0;
+							visibility: hidden;
+							transition: opacity 0.15s ease-out, visibility 0.15s ease-out !important;
+						}
+					}
+
+					&[data-cursor-dragging="true"] {
+						.division-inner {
+							transform: scale(0.944);
+						}
+
+						.picture-overlay::after {
+							opacity: 0;
+							background: none;
+							transform: none;
+						}
+
+						#cursorChildCircle > div {
+							transform: scale(0.8);
+						}
+
+						#cursorChildBall > div {
+							opacity: 1;
+							visibility: visible;
+							transition: opacity;
+						}
+					}
+
+					&[data-cursor-hovering="true"] {
+						#cursorChildCircle > div {
+							transform: scale(1.4);
+							opacity: 0.25;
+						}
+
+						#cursorChildText > div::after {
+							opacity: 1;
+							visibility: visible;
+							--tw-scale-x: 1;
+							--tw-scale-y: 1;
+						}
+					}
+				}
+
+				.division {
+					&[data-division-active="true"] {
+						.element-title-svg text {
+							fill: white;
+							stroke: transparent;
+							filter: drop-shadow(-1px -1px 0px #000) drop-shadow(4px 4px 0px #000) drop-shadow(-1px 1px 0px #000) drop-shadow(1px -1px 0px #000);
+						}
+
+						.element-subtitle span {
+							text-shadow: 0 0.5px 0 #000, 0 -0.5px 0 #000, 0.5px 0 0 #000, -0.5px 0 0 #000, 2px 2px 0 #000;
+							color: white;
+						}
+
+						.picture-link:hover + .picture-overlay::after {
+							--tw-translate-x: -105%;
+						}
+					}
+
+					&[data-division-selected="false"] {
+						.division-inner {
+							animation: zoomOut 2000ms;
+						}
+					} 
+
+					&[data-division-selected="true"] {
+						.division-inner {
+							z-index: 1;
+							position: absolute;
+							height: 100%;
+							width: 100vw;
+							animation: zoomIn 2000ms;
+						}
+
+						.division-contents {
+							opacity: 1;
+							transition-delay: 1500ms;
+							z-index: 3;
+						}
+
+						.division-elements {
+							opacity: 0;
+							transition-delay: 300ms;
+							--tw-translate-y: 35vh;
+						}
+
+						.division-border span {
+							opacity: 0;
+							&:nth-child(1), &:nth-child(3) { --tw-scale-y: 0; }
+							&:nth-child(2), &:nth-child(4) { --tw-scale-x: 0; }
+						}
+					}
+				}
+			</style>
+	</head>
+	<body class='w-full h-full m-0 p-0 bg-[#ede4cd] text-[#111] leading-[1.5] tracing-[.075em] overflow-x-hidden [-webkit-tap-highlight-color:transparent] [overscroll-behavior-y:none] [font-feature-settings:"palt"] [font-family:Cabin,-apple-system,BlinkMacSystemFont,Segoe_UI,Roboto,Helvetica,Arial,sans-serif,Apple_Color_Emoji,Segoe_UI_Emoji,Segoe_UI_Symbol]'>
+			<div id="root">
+				<div id="content" class="w-full h-full m-0 fixed top-0 left-0 z-0">
+					<div class="ui-overlay fixed inset-0 z-[1] transition-[z-index] delay-[2000ms] pointer-events-none">
+						<header class="fixed top-[5.336vh] max-sm:top-[20px] w-full">
+							<div class="px-[5vw] max-sm:px-[20px] py-[2.778vh] flex gap-2 justify-between flex-wrap">
+								<div onmouseenter="cursorEnter('Me')" onmouseleave="cursorLeave()" class='font-["MADEOuterSans"] leading-[0.8em] tracking-tighter z-[1] flex-shrink-0 pointer-events-auto text-[32px] text-white overflow-hidden pb-[0.25em] w-[6.5ch] [&:hover>#surname]:animate-[rotate_2s_infinite] [&:hover>#surname::before]:animate-[carousel_1.75s_step-end_infinite]'>
+									<div id="firstName" class="before:content-['vinícius']"></div>
+									<div id="surname" class='relative before:content-["andrade."] origin-left'></div>
+								</div>
+								<nav class="pointer-events-auto flex gap-2">
+									<label
+										id="burgerMenu"
+										onmouseenter="cursorEnter('')"
+										onmouseleave="cursorLeave()"
+										style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0VFQjAxODtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K) no-repeat 50% 50%"
+										class='
+											[&:has(input:checked)+ul]:max-md:translate-y-0
+											[&:has(input:not(:checked))+ul>li>a]:rotate-[-12deg] [&:has(input:not(:checked))+ul>li>a]:translate-y-[35px]
+											[&:has(input:checked)+ul>li>a]:delay-[calc(var(--order)_*_100ms)] [&:has(input:checked)+ul>li>a]:translate-y-0 [&:has(input:checked)+ul>li>a]:duration-1000 [&:has(input:checked)+ul>li:not>a]:rotate-0
+											[&:has(input:checked)]:before:opacity-100 [&:has(input:checked)]:before:visible 
+											[&:has(input:checked)_.lines_span:nth-child(1)]:[transform:matrix(0.7071,0.7071,-0.7071,0.7071,0,4)]
+											[&:has(input:checked)_.lines_span:nth-child(1)]:delay-150
+											[&:has(input:checked)_.lines_span:nth-child(2)]:scale-x-0
+											[&:has(input:checked)_.lines_span:nth-child(3)]:[transform:matrix(0.7071,-0.7071,0.7071,0.7071,0,-4)]
+											[&:has(input:checked)_.lines_span:nth-child(3)]:delay-150
+											flex md:hidden
+											before:content-[""] before:opacity-0 before:transition-opacity before:duration-500 before:absolute before:inset-0 before:[background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I2RkZGNkNjtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K)_no-repeat_50%_50%]
+											z-[1] cursor-pointer outline-none relative h-[48px] w-[48px] text-[15px] [filter:drop-shadow(2px_2px_0px_#000)] pointer-events-auto transition-all
+										'
+									>
+										<div class="lines w-[16px] h-[9px] m-auto absolute inset-0">
+											<span class="absolute block w-full h-[1px] bg-black top-0 transition-all duration-300"></span> 
+											<span class="absolute block w-full h-[1px] bg-black top-[4px] origin-left transition-all duration-300"></span> 
+											<span class="absolute block w-full h-[1px] bg-black bottom-0 transition-all duration-300"></span>
+										</div>
+										<input class="hidden" hidden type="checkbox"/>
+									</label>
+									<ul class='[&>li>a]:transition-transform fixed inset-0 bg-[#c9171e] translate-y-full [transition:transform_cubic-bezier(0.4,0,0.2,1)_300ms] flex flex-col gap-[15px] justify-center items-center pt-[15px]'>
+										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(0)">
+											<a style="--order: 3;" class="inline-flex w-full h-full origin-right" href="#aboutContent">About</a>
+										</li>
+										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(1)">
+											<a style="--order: 2;" class="inline-flex w-full h-full origin-right" href="#aboutContent">Work</a>
+										</li>
+										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"]' onclick="selectDivision(2)">
+											<a style="--order: 1;" class="inline-flex w-full h-full origin-right" href="#aboutContent">Blog</a>
+										</li>
+										<li class="mt-[20px]">
+												<a 
+												onmouseenter="cursorEnter('')"
+												onmouseleave="cursorLeave()"
+												href="mailto:vbbjandrade@gmail.com"
+												style="--delay: 0; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDE4NiA3MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg2IDcwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiNGOEI1MDA7c3Ryb2tlOiMyMzE4MTU7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fTwvc3R5bGU+Cjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTEzLjE4LDIuNSAyNS40MSwxOS41IDEyLjMzLDQ0LjUgMjEuMzIsNTQuNzMgNi4zOCw2NS41IDI2LjMxLDYwLjQgMzIuNTUsNjcuNSAxNDkuMjEsNjUuNSAKCTE4My42MiwyMC41ICIvPgo8L3N2Zz4K) no-repeat 50% 50%"
+												class='flex items-center justify-center outline-none h-[74px] w-[186px] text-[12px] [filter:drop-shadow(4px_4px_0px_#000)]'
+											>
+												<span class='font-["MADEOuterSans"] pt-3'>Contact me</span>
+											</a>
+										</li>
+									</ul>
+									<a 
+										onmouseenter="cursorEnter('')"
+										onmouseleave="cursorLeave()"
+										href="mailto:vbbjandrade@gmail.com"
+										style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDE4NiA3MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg2IDcwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiNGOEI1MDA7c3Ryb2tlOiMyMzE4MTU7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fTwvc3R5bGU+Cjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTEzLjE4LDIuNSAyNS40MSwxOS41IDEyLjMzLDQ0LjUgMjEuMzIsNTQuNzMgNi4zOCw2NS41IDI2LjMxLDYwLjQgMzIuNTUsNjcuNSAxNDkuMjEsNjUuNSAKCTE4My42MiwyMC41ICIvPgo8L3N2Zz4K) no-repeat 50% 50%"
+										class='hidden md:flex items-center justify-center outline-none h-[74px] w-[186px] text-[12px] [filter:drop-shadow(4px_4px_0px_#000)] hover:[filter:drop-shadow(0px_0px_0px_#000)] hover:translate-x-[4px] hover:translate-y-[4px] hover:rotate-[3deg] transition-all'
+									>
+										<span class='font-["MADEOuterSans"] pt-3'>Contact me</span>
+									</a>
+								</nav>
+							</div>
+						</header>
+					</div>
+					<div id="sliderContainer" class="h-full animate-[sliderEnter_1s]">
+						<div 
+							id="divisionSlider" 
+							style="transform: translate3d(0px, 0px, 0px);"
+							class="w-[calc(var(--divisions)*60vw+40vw)] max-md:w-[calc(var(--divisions)*70vw+30vw)] px-[20vw] max-md:px-[15vw] flex h-full will-change-transform box-content" 
+						>
+
+							<div data-division-active="true" data-division-selected="" class='division [&[data-division-selected="true"]>.division-inner]:z-[3] relative flex flex-nowrap flex-[0_0_auto] justify-center items-center box-border h-full px-[5vw] w-[60vw] max-md:w-[70vw]'>
+								<div class="division-inner relative w-full h-[var(--divisionHeight)] [transition:all_350ms_cubic-bezier(0.23,1,0.32,1)_0s]">
+									<div class="w-full h-full">
+										<div class="division-contents absolute inset-0 bg-black/30 opacity-0 [transition:opacity_850ms_ease-out] z-[1] [clip-path]">
+											<div class='w-full h-full overflow-auto scroll-smooth'>
+												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
+													<button 
+														onclick="deselectDivision()"
+														style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0VFQjAxODtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K) no-repeat 50% 50%"
+														class='outline-none relative h-[48px] w-[48px] text-[15px] [filter:drop-shadow(2px_2px_0px_#000)] hover:[filter:drop-shadow(0px_0px_0px_#000)] pointer-events-auto hover:rotate-6 transition-all'
+													>
+														<span class='absolute translate-x-[-5px] translate-y-[-11px] rotate-90 font-bold'>↶</span>
+													</button>
+												</div>
+												<div class="flex flex-col items-start justify-center h-[calc(100vh_-_60px)] px-[20vw] max-sm:px-[20px]">
+													<span class="element-title text-white relative flex justify-center rotate-[-5deg]">
+														<h1 class='font-["Magic-Frankie"] [text-shadow:0_1px_0_#000,0_-1px_0_#000,1px_0_0_#000,-1px_0_0_#000,3px_3px_0_#000] text-[calc(6rem_+_120*(100vw_-_480px)/1200)] max-sm:text-[calc(7.2rem_+_64*(100vw_-_480px)/1200)]'>
+															about
+														</h1>
+													</span>
+													<span class='font-["MADEOuterSans"] [text-shadow:0_0.5px_0_#000,0_-0.5px_0_#000,0.5px_0_0_#000,-0.5px_0_0_#000,2px_2px_0_#000] block text-white text-[2rem] max-md:[font-size:1.4rem]'>
+														Sobre mim
+													</span>
+												</div>
+												<a href="#aboutContent" class='font-["MADEOuterSans"] font-light tracking-wide bg-white h-[60px] flex items-center px-[7.5vw] mx-[10vw] max-sm:mx-[20px] outline-none'>
+													<span>SCROLL DOWN</span>
+												</a>
+												<section id="aboutContent" class="w-full bg-[#ede4cd] px-[10vw] max-sm:px-[20px] pb-[60px]">
+													<div class="bg-white px-[50px] py-[70px] max-sm:px-[20px] max-sm:py-[50px] text-[15px] [letter-spacing:-.01em]">
+														<div class="grid items-start grid-cols-[minmax(0,280px)_1fr] max-lg:grid-cols-1">
+															<div class="[&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<img width="100%" height="100%" class="relative z-[1] saturate-0 transition-all" src="https://avatars.githubusercontent.com/u/43252803" />
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black transition-all"></div>
+															</div>
+															<div>
+																<div class="mb-8">
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Vinícius Andrade</h4>
+																	<span class="mt-4 text-[#111]">Frontend Developer @ <a class="underline hover:no-underline" href="https://www.khipo.ai/">Khipo</a></span>
+																</div>
+																<p class="text-[#7E7E7E]">
+																	<b id="yearsOld"></b> y/o based in São Paulo, Brazil. Coding professionally for <b id="codingFor"></b> and counting!
+																	Fascinated by interfaces, interactions, customization and reverse engineering stuff.
+																	Personal love for UI Component Libraries, Micro Frontends, Developer experience and CSS witchcraft.
+																	Always keeping an eye out for new and exciting technologies, but most familiar with the React ecosystem.
+																</p>
+																<ul class="flex gap-4 flex-wrap mt-16">
+																	<li><a class="underline hover:no-underline" href="https://github.com/vbbjandrade">GitHub</a></li>
+																	<li><a class="underline hover:no-underline" href="https://www.linkedin.com/in/viniciusbbja/">LinkedIn</a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+										<div class="picture-link absolute top-0 left-0 w-full h-full z-[2] cursor-pointer pointer-events-auto [&:hover+div:after]:opacity-50 [&:hover+div:after]:[transition:transform_1.5s_cubic-bezier(0.23,1,0.32,1)_0s,opacity_1s_cubic-bezier(0.165,0.84,0.44,1)_0s]"></div>
+										<div 
+											style="background-image: url(./images/speakers-thumb.webp);"
+											class='picture-overlay relative w-full h-full cursor-pointer bg-cover bg-[50%] bg-no-repeat overflow-hidden after:bg-[linear-gradient(120deg,rgba(255,255,255,0),rgba(255,255,255,0)_49%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,0.3)_60%,rgba(255,255,255,0.2)_65%,rgba(255,255,255,0.1)_75%,rgba(255,255,255,0)_76%,rgba(255,255,255,0))] after:content-[""] after:absolute max-md:after:hidden after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-overlay after:translate-x-full after:opacity-1' 
+											></div>
+									</div>
+									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 [transition:opacity_1000ms_ease-out_1500ms,transform_1000ms_ease-out_1500ms] opacity-100 translate-y-0">
+										<div class="relative block w-full pointer-events-none [transform:translate3d(0,42%,0)] max-md:absolute max-md:w-[70vw]">
+											<span class="element-title text-white [text-align:center] relative flex justify-center rotate-[-5deg]">
+												<svg width="810" height="260" viewBox="0 0 810 260" class="element-title-svg block w-full max-h-[21vw] [text-anchor:middle] [font-size:216px] max-md:max-h-[22.5vw] [filter:drop-shadow(-1px_-1px_0px_transparent)_drop-shadow(4px_4px_0px_transparent)_drop-shadow(-1px_1px_0px_transparent)_drop-shadow(1px_1px_0px_transparent)]">
+														<text class='font-["Magic-Frankie"] fill-transparent stroke-white stroke-2 [transition:all_.35s_ease-out_0s]' x="50%" y="65%">
+															about
+														</text>
+												</svg>
+											</span>
+											<span class="element-subtitle block absolute top-0 left-[50%] w-[85%] h-[50%] [transform:translate3d(-50%,50%,0)] max-md:h-[65%]">
+												<span class='font-["MADEOuterSans"] block absolute bottom-0 right-0 text-[#c9171e] text-[2rem] [text-shadow:0_1px_0_#fff,0_-1px_0_#fff,1px_0_0_#fff,-1px_0_0_#fff] [transition:color_.35s_ease-out_0s,text-shadow_.65s_ease-out,transform_.65s_ease-out_0s] max-md:[font-size:1.4rem]'>
+													Sobre mim
+												</span>
+											</span>
+										</div>
+									</div>
+									<div class='division-border [&>span]:absolute [&>span]:bg-black'>
+										<span class="w-full h-[4px] top-0 left-0 origin-[50%_0_0] transition-all"></span>
+										<span class="w-[4px] h-full top-0 right-0 origin-[100%_50%_0] transition-all"></span>
+										<span class="w-full h-[4px] bottom-0 left-0 origin-[50%_100%_0] transition-all"></span>
+										<span class="w-[4px] h-full top-0 left-0 origin-[0_50%_0] transition-all"></span>
+									</div>
+								</div>
+							</div>
+
+							<div data-division-selected="" class='division [&[data-division-selected="true"]>.division-inner]:z-[3] relative flex flex-nowrap flex-[0_0_auto] justify-center items-center box-border h-full px-[5vw] w-[60vw] max-md:w-[70vw]'>
+								<div class="division-inner relative w-full h-[var(--divisionHeight)] [transition:all_350ms_cubic-bezier(0.23,1,0.32,1)_0s]">
+									<div class="w-full h-full">
+										<div class="division-contents absolute inset-0 bg-black/30 opacity-0 [transition:opacity_850ms_ease-out] z-[1] [clip-path]">
+											<div class='w-full h-full overflow-auto scroll-smooth'>
+												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
+													<button 
+														onclick="deselectDivision()"
+														style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImJ0bl8xXyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDEwNCA4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTA0IDgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0VFQjAxODtzdHJva2U6IzA0MDAwMDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxwYXRoIGlkPSJidG4iIGNsYXNzPSJzdDAiIGQ9Ik0xNS44LDEyLjc4TDEuNSw1My4wOEwyNi41Niw4MGw2OC41OC05LjIxbDcuMzYtNTQuOTFMNDkuNzIsMkwxNS44LDEyLjc4eiIvPgo8L3N2Zz4K) no-repeat 50% 50%"
+														class='outline-none relative h-[48px] w-[48px] text-[15px] [filter:drop-shadow(2px_2px_0px_#000)] hover:[filter:drop-shadow(0px_0px_0px_#000)] pointer-events-auto hover:rotate-6 transition-all'
+													>
+														<span class='absolute translate-x-[-5px] translate-y-[-11px] rotate-90 font-bold'>↶</span>
+													</button>
+												</div>
+												<div class="flex flex-col items-start justify-center h-[calc(100vh_-_60px)] px-[20vw] max-sm:px-[20px]">
+													<span class="element-title text-white relative flex justify-center rotate-[-5deg]">
+														<h1 class='font-["Magic-Frankie"] [text-shadow:0_1px_0_#000,0_-1px_0_#000,1px_0_0_#000,-1px_0_0_#000,3px_3px_0_#000] text-[calc(6rem_+_120*(100vw_-_480px)/1200)] max-sm:text-[calc(7.2rem_+_64*(100vw_-_480px)/1200)]'>
+															work
+														</h1>
+													</span>
+													<span class='font-["MADEOuterSans"] [text-shadow:0_0.5px_0_#000,0_-0.5px_0_#000,0.5px_0_0_#000,-0.5px_0_0_#000,2px_2px_0_#000] block text-white text-[2rem] max-md:[font-size:1.4rem]'>
+														Meu trabalho
+													</span>
+												</div>
+												<a href="#workContent" class='font-["MADEOuterSans"] font-light tracking-wide bg-white h-[60px] flex items-center px-[7.5vw] mx-[10vw] max-sm:mx-[20px] outline-none'>
+													<span>SCROLL DOWN</span>
+												</a>
+												<section id="workContent" class="w-full bg-[#ede4cd] px-[10vw] max-sm:px-[20px] pb-[60px]">
+													<div class="bg-white px-[50px] py-[70px] max-sm:px-[20px] max-sm:py-[50px] text-[15px] [letter-spacing:-.01em]">
+														<div class="grid items-start grid-cols-[minmax(0,280px)_1fr] max-lg:grid-cols-1">
+															<div class="[&>*]:[clip-path:polygon(15%_8%,88%_6%,85%_88%,8%_88%)] [&:hover>*]:[clip-path:polygon(15%_3%,91%_5%,88%_86%,4%_90%)] relative mx-auto">
+																<img width="100%" height="100%" class="relative z-[1] saturate-0 transition-all" src="https://avatars.githubusercontent.com/u/43252803" />
+																<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black transition-all"></div>
+															</div>
+															<div>
+																<div class="mb-8">
+																	<h4 class='font-["MADEOuterSans"] font-medium text-[30px] leading-[3rem]'>Vinícius Andrade</h4>
+																	<span class="mt-4 text-[#111]">Frontend Developer @ <a class="underline hover:no-underline" href="https://www.khipo.ai/">Khipo</a></span>
+																</div>
+																<p class="text-[#7E7E7E]">
+																	<b id="yearsOld"></b> y/o based in São Paulo, Brazil. Coding professionally for <b id="codingFor"></b> and counting!
+																	Fascinated by interfaces, interactions, customization and reverse engineering stuff.
+																	Personal love for UI Component Libraries, Micro Frontends, Developer experience and CSS witchcraft.
+																	Always keeping an eye out for new and exciting technologies, but most familiar with the React ecosystem.
+																</p>
+																<ul class="flex gap-4 flex-wrap mt-16">
+																	<li><a class="underline hover:no-underline" href="https://github.com/vbbjandrade">GitHub</a></li>
+																	<li><a class="underline hover:no-underline" href="https://www.linkedin.com/in/viniciusbbja/">LinkedIn</a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+										<div class="picture-link absolute top-0 left-0 w-full h-full z-[2] cursor-pointer pointer-events-auto [&:hover+div:after]:opacity-50 [&:hover+div:after]:[transition:transform_1.5s_cubic-bezier(0.23,1,0.32,1)_0s,opacity_1s_cubic-bezier(0.165,0.84,0.44,1)_0s]"></div>
+										<div 
+											style="background-image: url(./images/schedule-thumb.webp);"
+											class='picture-overlay relative w-full h-full cursor-pointer bg-cover bg-[50%] bg-no-repeat overflow-hidden after:bg-[linear-gradient(120deg,rgba(255,255,255,0),rgba(255,255,255,0)_49%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,0.3)_60%,rgba(255,255,255,0.2)_65%,rgba(255,255,255,0.1)_75%,rgba(255,255,255,0)_76%,rgba(255,255,255,0))] after:content-[""] after:absolute max-md:after:hidden after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-overlay after:translate-x-full after:opacity-1' 
+											></div>
+									</div>
+									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 [transition:opacity_1000ms_ease-out_1500ms,transform_1000ms_ease-out_1500ms] opacity-100 translate-y-0">
+										<div class="relative block w-full pointer-events-none [transform:translate3d(0,42%,0)] max-md:absolute max-md:w-[70vw]">
+											<span class="element-title text-white [text-align:center] relative flex justify-center rotate-[-5deg]">
+												<svg width="810" height="260" viewBox="0 0 810 260" class="element-title-svg block w-full max-h-[21vw] [text-anchor:middle] [font-size:216px] max-md:max-h-[22.5vw] [filter:drop-shadow(-1px_-1px_0px_transparent)_drop-shadow(4px_4px_0px_transparent)_drop-shadow(-1px_1px_0px_transparent)_drop-shadow(1px_1px_0px_transparent)]">
+														<text class='font-["Magic-Frankie"] fill-transparent stroke-white stroke-2 [transition:all_.35s_ease-out_0s]' x="50%" y="65%">
+															work
+														</text>
+												</svg>
+											</span>
+											<span class="element-subtitle block absolute top-0 left-[50%] w-[85%] h-[50%] [transform:translate3d(-50%,50%,0)] max-md:h-[65%]">
+												<span class='font-["MADEOuterSans"] block absolute bottom-0 right-0 text-[#c9171e] text-[2rem] [text-shadow:0_1px_0_#fff,0_-1px_0_#fff,1px_0_0_#fff,-1px_0_0_#fff] [transition:color_.35s_ease-out_0s,text-shadow_.65s_ease-out,transform_.65s_ease-out_0s] max-md:[font-size:1.4rem]'>
+													Meu trabalho
+												</span>
+											</span>
+										</div>
+									</div>
+									<div class='division-border [&>span]:absolute [&>span]:bg-black'>
+										<span class="w-full h-[4px] top-0 left-0 origin-[50%_0_0] transition-all"></span>
+										<span class="w-[4px] h-full top-0 right-0 origin-[100%_50%_0] transition-all"></span>
+										<span class="w-full h-[4px] bottom-0 left-0 origin-[50%_100%_0] transition-all"></span>
+										<span class="w-[4px] h-full top-0 left-0 origin-[0_50%_0] transition-all"></span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="absolute bottom-0 left-0 w-full h-[3px] z-[1] pointer-events-none">
+							<span 
+								id="progressBar"
+								class="block relative w-full h-full bg-white [transform-origin:0_50%_0]" 
+								style="transform: translate3d(0px, 0px, 0px) scale(0, 1);"
+							></span>
+					</div>
+				</div>
+				<div class="w-full h-full fixed z-[-1]">
+					<div class="fixed top-0 left-0 w-full h-full bg-[#c9171e] overflow-hidden z-[1]">
+						<div id="backgroundText" class='font-["Magic-Frankie"] text-[#d31c23] absolute inset-0 flex items-center text-[18.5vw] rotate-[-6deg] text-center leading-[0.75em]'></div>
+						<!-- <canvas id="canvas" class="w-full h-full bg-white"></canvas> -->
+					</div>
+				</div>
+				<div 
+					id="cursorWrapper"
+					class='fixed z-[999] pointer-events-none opacity-100'
+				>
+						<div class="Mouse-Pointer fixed top-0 left-0 w-[38px] h-[38px] pointer-events-none">
+							<div 
+								id="cursorChildCircle"
+								class="absolute top-0 left-0 w-full h-full will-change-transform"
+							>
+								<div 
+									class="relative w-full h-full bg-transparent shadow-[0_0_0_1px_white] rounded-[18px] transition-all ease-out duration-[250ms]"
+								></div>
+							</div>
+							<div id="cursorChildBall" class="absolute will-change-transform top-[2.5px] left-[2.5px] mt-[-3px] ml-[-3px] w-[6px] h-[6px]">
+								<div class="w-full h-full bg-[rgba(255,255,255,0.2)] rounded-[3px] opacity-0 invisible [transition:opacity_.25s_ease-out,visibility_.25s_ease-out_0s]"></div>
+							</div>
+							<div 
+								id="cursorChildText"
+								class="absolute top-0 left-0 w-full h-full will-change-transform"
+							>
+								<div 
+									class='
+										flex flex-nowrap justify-center items-center content-center relative w-full h-full
+										after:content-[var(--cursorText)] after:absolute after:scale-50 after:font-["MADEOuterSans"] after:text-white after:text-[9px] after:tracking-normal 
+										after:opacity-0 after:invisible after:font-bold after:[transition:transform_.25s_cubic-bezier(0.19,1,0.22,1)_0s,opacity_.25s_ease-out_0s,_visibility_0.25s_ease-out_0s]
+									'
+								>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div id="adjustmentWrapper" class="z-50 absolute top-0 left-0 w-full h-full pointer-events-none transition-opacity duration-[1500ms]">
+				<div 
+					id="noiseAdjustment" 
+					class='absolute top-0 left-0 w-full h-full opacity-[0.02] bg-[url(./images/bignoise-min.png)] animate-[flip_0.3s_steps(1)_infinite]'
+				></div>
+			</div>
+			<script type="text/javascript">
+				const mobileAndTabletCheck = function() {
+					let check = false;
+					(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+					return check;
+				};
+
+				const html = document.querySelector("html");
+				const cssRoot = document.querySelector(":root");
+				const root = document.getElementById("root");
+				const content = document.getElementById("content");
+				const cursorWrapper = document.getElementById("cursorWrapper");
+				const ball = document.getElementById("cursorChildBall");
+				const circle = document.getElementById("cursorChildCircle");
+				const text = document.getElementById("cursorChildText");
+				const bgText = document.getElementById("backgroundText");
+				const yearsOld = document.getElementById("yearsOld")
+				const codingFor = document.getElementById("codingFor");
+				const burgerMenu = document.getElementById("burgerMenu");
+
+				bgText.textContent = `portfolio ${new Date().getUTCFullYear()}`
+				yearsOld.textContent = `${new Date().getUTCFullYear() - 2000}`
+				codingFor.textContent = `${new Date().getUTCFullYear() - 2017} years`
+
+				let cursorX = 0,
+						cursorY = 0,
+						circleX = 0,
+						circleY = 0,
+						ballX = 0,
+						ballY = 0,
+						textX = 0,
+						textY = 0,
+						speedCircle = 0.115,
+						speedBall = 0.175,
+						speedText = 0.08;
+
+				let divisions = Array.prototype.slice.call(document.querySelectorAll('.division')), 
+						gridWidth = 0,
+						divisionCenter = [],
+						divisionSlider = document.getElementById('divisionSlider'),
+						translateStyle = "",
+						translateX = 0,
+						closest = 0,
+						closestIndex = 0,
+						closestDOM = document.querySelector("[data-division-active]"),
+						dragProgress = document.querySelector("#progressBar");
+
+				cssRoot.style.setProperty('--divisions', divisions.length)
+
+				const setGridSize = () => {
+					gridWidth = document.querySelector('.division').clientWidth;
+					divisions.forEach((element, index) => {
+							divisionCenter[index] = index*((element.offsetLeft+gridWidth) - element.offsetLeft);
+					});
+				}
+
+				setGridSize()
+
+				gsap.config({
+					force3D: true
+				});
+
+				if (mobileAndTabletCheck()) {
+					html.dataset.cursorDisabled = true
+				} else {
+					root.addEventListener("mouseenter", () => html.dataset.cursorDisabled = false);
+					root.addEventListener("mouseleave", () => html.dataset.cursorDisabled = true);
+				}
+
+					function throttle (callback, limit) {
+							var waiting = false;
+							return function () {
+									if (!waiting) {
+											callback.apply(this, arguments);
+											waiting = true;
+											setTimeout(function () {
+													waiting = false;
+											}, limit);
+									}
+							}
+					};
+
+					function debounce(func, wait, immediate) {
+							var timeout;
+							return function() {
+									var context = this, args = arguments;
+									var later = function() {
+											timeout = null;
+											if (!immediate) func.apply(context, args);
+									};
+									var callNow = immediate && !timeout;
+									clearTimeout(timeout);
+									timeout = setTimeout(later, wait);
+									if (callNow) func.apply(context, args);
+							};
+					};
+
+					function sliderProgress() {
+							var dragProgressX = -gridWidth * (closestIndex);
+							var currentIndex = closestIndex;
+							var progress = -dragProgressX / (gridWidth * (divisions.length-1));
+							TweenLite.to(dragProgress, 0.65,{
+									scaleX: progress,
+									force3D: !0,
+									ease: "expo.out"
+							})
+					}
+
+					function selectDivision(index) {
+						burgerMenu.click();
+						calcClosest(index);
+						gsap.to(draggable[0].target, {
+							onStart: () => sliderProgress(),
+							duration: .65,
+							ease: "power2.inOut",
+							x: closest*-1,
+							onComplete: () => draggable[0].update()
+						});
+						setTimeout(() => divisions[index].querySelector('.picture-link').click(), 300);
+					}
+
+					function deselectDivision() {
+						[...document.querySelectorAll('[data-division-selected="true"]')].forEach(e => e.dataset.divisionSelected = "false");
+						draggable[0].enable();	
+					}
+
+					function cursorEnter(text) {
+						html.dataset.cursorHovering = "true";
+						cssRoot.style.setProperty('--cursorText', `"${text}"`);
+					}
+
+					function cursorLeave() {
+						cssRoot.style.setProperty('--cursorText', "''");
+						html.dataset.cursorHovering = "false";
+					}
+
+					divisionSlider.addEventListener("mouseover", function(event){
+						if (!event.target.matches(".picture-link")) return
+
+						var picDivision = event.target.closest('.division');
+						var closestIndex = divisions.indexOf(closestDOM);
+						var hoveredIndex = divisions.indexOf(picDivision);
+
+						if (hoveredIndex == closestIndex) {
+							cursorEnter("Enter")
+						} else if (hoveredIndex > closestIndex) {
+							cursorEnter("Next")
+						} else if (hoveredIndex < closestIndex) {
+							cursorEnter("Prev")
+						}
+					});
+					
+					divisionSlider.addEventListener("mouseout", function(event){
+						if (!event.target.matches(".picture-link")) return
+						cursorLeave()
+					});
+					
+					divisionSlider.addEventListener("click", function(event){
+						if (!event.target.matches(".picture-link")) return
+
+						var picDivision = event.target.closest('.division');
+						var closestIndex = divisions.indexOf(closestDOM);
+						var hoveredIndex = divisions.indexOf(picDivision);
+						if(hoveredIndex == closestIndex) {
+							if (picDivision.dataset.divisionSelected !== "true") {
+								html.dataset.divisionSelected = "true";
+								picDivision.dataset.divisionSelected = "true";
+								draggable[0].disable();	
+							}
+						} else {
+							calcClosest(hoveredIndex);
+							gsap.to(draggable[0].target, {
+									onStart: () => sliderProgress(),
+									duration: .65,
+									ease: "power2.inOut",
+									x: closest*-1,
+									onComplete: () => draggable[0].update()
+							});
+							sliderProgress();
+						}
+					});
+
+					function animateCursor() {
+							let distX1 = cursorX - circleX
+							let distY1 = cursorY - circleY
+							let distX2 = cursorX - ballX
+							let distY2 = cursorY - ballY
+							let distX4 = cursorX - textX
+							let distY4 = cursorY - textY
+							circleX = circleX + (distX1 * speedCircle)
+							circleY = circleY + (distY1 * speedCircle)  
+							ballX = ballX + (distX2 * speedBall)
+							ballY = ballY + (distY2 * speedBall)  
+							textX = textX + (distX4 * speedText)
+							textY = textY + (distY4 * speedText)  
+							TweenLite.to(circle, 0, {
+									x:circleX,
+									y:circleY,
+							})
+							TweenLite.to(ball, 0, {
+									x:ballX,
+									y:ballY,
+							})
+							TweenLite.to(text, 0, {
+									x:textX,
+									y:textY,
+							})
+							requestAnimationFrame(animateCursor)
+					}
+					requestAnimationFrame(animateCursor);
+					//REQUESTANIMATIONFRAME MAKES THE FUNCTION RECURSIVE, AND MUST BE USED FOR REPETITIVE ANIMATIONS TO RUN MORE EFFICIENTLY (BOTH FOR PERFORMANCE AND BATTERY SAVING)
+
+					document.addEventListener("mousemove", function (e) {
+							cursorX = e.clientX
+							cursorY = e.clientY
+					});
+					TweenLite.set(circle, {
+							xPercent:-50,
+							yPercent:-50
+					});
+					TweenLite.set(ball, {
+							xPercent:-25,
+							yPercent:-25
+					});
+					TweenLite.set(text, {
+							xPercent:-50,
+							yPercent:-50
+					});
+
+					var draggable = Draggable.create("#divisionSlider", {
+							type:"x, y",
+							bounds:"#sliderContainer",
+							dragResistance: -0.99,
+							onDragStart: () => html.dataset.cursorDragging = true,
+							onRelease: function(e) {
+								calcClosest();
+								gsap.to(this.target, {
+									duration: 0.65,
+									ease: CustomEase.create("cubic", ".23, 1, .32, 1"),
+									x: closest*-1,
+									onComplete: () => draggable[0].update()
+								});
+								html.dataset.cursorDragging = false;
+								sliderProgress();
+							},
+							onDrag: function (e) {
+								
+								cursorX = this.pointerX;
+								cursorY = this.pointerY;
+								translateStyle = ((((divisionSlider.style.transform)).slice(11)).split(",", 1)[0]).replace(/[^\d-.]/g, '');
+								translateX = +translateStyle.replace(/[^\d.]/g, '');
+								progress = translateX / (gridWidth * (divisions.length-1));
+								TweenLite.to(dragProgress, 0.25, {
+									scaleX: progress,
+									force3D: !0,
+									ease: "expo.out"
+								});
+							}
+					});
+
+					function calcClosest(indexOverride){
+						if (indexOverride != null) {
+							var prevClosest = closest;
+							var activeDOM = document.querySelector("[data-division-active]");
+							closest = indexOverride * gridWidth;
+						} else {
+							translateStyle = ((((divisionSlider.style.transform)).slice(11)).split(",", 1)[0]).replace(/[^\d-.]/g, '');
+							translateX = +translateStyle.replace(/[^\d.]/g, '');
+							var prevClosest = closest;
+							var activeDOM = document.querySelector("[data-division-active]");
+							closest = divisionCenter.reduce(function(prev, curr, idx) {
+								var compCres = Math.abs(curr - translateX + 0.25*gridWidth) < Math.abs(prev - translateX);
+								var compDecr = Math.abs(curr - translateX - 0.25*gridWidth) < Math.abs(prev - translateX);
+								if (prevClosest > translateX){
+									return (compCres ? curr : prev);
+								} else {
+									return (compDecr ? curr : prev);
+								}
+							}, 0);
+						}
+						closestIndex = divisionCenter.indexOf(closest);
+						closestDOM = divisions[closestIndex];
+						delete activeDOM.dataset.divisionActive;
+						closestDOM.dataset.divisionActive = true;
+						document.title = `Vinícius Andrade • ${closestDOM.querySelector(".element-subtitle").textContent}`;
+					}
+
+					const throttledScrollPanel = throttle(function(event){
+							event.preventDefault();
+							if (!draggable[0].enabled()) return;
+							if (event.deltaY < 0 && closestIndex > 0) {
+									var closestScroll = divisions.indexOf(closestDOM)-1;
+									calcClosest(closestScroll);
+									gsap.to(draggable[0].target, {
+										onStart: () => sliderProgress(),
+										duration: .65,
+										ease: "power2.inOut",
+										x: closest*-1,
+										onComplete: () => draggable[0].update()
+									});
+							} else if (event.deltaY > 0 && closestIndex < (divisions.length - 1)){
+								var closestScroll = divisions.indexOf(closestDOM)+1;
+								calcClosest(closestScroll);
+								gsap.to(draggable[0].target,  {
+								onStart: () => sliderProgress(),
+								duration: .65,
+								ease:  "power2.inOut",
+								x: closest*-1,
+								onComplete: () => draggable[0].update()
+							});
+							}
+					}, 650);
+
+					const debouncedResize = debounce(function() {
+						setGridSize()
+						gsap.to(draggable[0].target, {
+							duration: 0.25,
+							x: divisionCenter[closestIndex]*-1,
+							ease: CustomEase.create("cubic", ".23, 1, .32, 1"),
+							onComplete: () => draggable[0].update()
+						});
+					}, 250);
+
+					window.addEventListener('resize', debouncedResize);
+					content.addEventListener("wheel", throttledScrollPanel);
+			</script>
+
+	</body>
+</html>
