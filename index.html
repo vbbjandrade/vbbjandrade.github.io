@@ -380,6 +380,13 @@
 								</nav>
 							</div>
 						</header>
+						<div class="fixed bottom-0 left-0 w-full h-[3px] z-[1] pointer-events-none">
+							<span 
+								id="progressBar"
+								class="block relative w-full h-full bg-white [transform-origin:0_50%_0]" 
+								style="transform: translate3d(0px, 0px, 0px) scale(0, 1);"
+							></span>
+					</div>
 					</div>
 					<div id="sliderContainer" class="h-full animate-[sliderEnter_1s]">
 						<div 
@@ -628,13 +635,6 @@
 							</div>
 
 						</div>
-					</div>
-					<div class="absolute bottom-0 left-0 w-full h-[3px] z-[1] pointer-events-none">
-							<span 
-								id="progressBar"
-								class="block relative w-full h-full bg-white [transform-origin:0_50%_0]" 
-								style="transform: translate3d(0px, 0px, 0px) scale(0, 1);"
-							></span>
 					</div>
 				</div>
 				<div class="w-full h-full fixed z-[-1]">
