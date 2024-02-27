@@ -256,6 +256,11 @@
 				}
 
 				.division {
+					& .division-elements {
+						transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+						transition-delay: 700ms;
+					}
+
 					&[data-division-active="true"] {
 						.element-title:has(.element-title-svg text) {
 							filter: drop-shadow(-1px -1px 0px #000) drop-shadow(4px 4px 0px #000) drop-shadow(-1px 1px 0px #000) drop-shadow(1px -1px 0px #000);
@@ -277,7 +282,7 @@
 
 					&[data-division-selected="false"] {
 						.division-inner {
-							animation: zoomOut 2000ms;
+							animation: zoomOut 1500ms;
 						}
 					} 
 
@@ -494,7 +499,7 @@
 											class='picture-overlay relative w-full h-full cursor-pointer bg-cover bg-[50%] bg-no-repeat overflow-hidden after:bg-[linear-gradient(120deg,rgba(255,255,255,0),rgba(255,255,255,0)_49%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,0.3)_60%,rgba(255,255,255,0.2)_65%,rgba(255,255,255,0.1)_75%,rgba(255,255,255,0)_76%,rgba(255,255,255,0))] after:content-[""] after:absolute max-md:after:hidden after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-overlay after:translate-x-full after:opacity-1' 
 											></div>
 									</div>
-									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 [transition:opacity_1000ms_ease-out_1500ms,transform_1000ms_ease-out_1500ms] opacity-100 translate-y-0">
+									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 opacity-100 translate-y-0">
 										<div class="relative block w-full pointer-events-none [transform:translate3d(0,42%,0)] max-md:absolute max-md:w-[70vw]">
 											<span class="element-title [filter:drop-shadow(-1px_-1px_0px_transparent)_drop-shadow(4px_4px_0px_transparent)_drop-shadow(-1px_1px_0px_transparent)_drop-shadow(1px_1px_0px_transparent)] [transition:all_.35s_ease-out_0s] text-white [text-align:center] relative flex justify-center rotate-[-5deg]">
 												<svg width="810" height="260" viewBox="0 0 810 260" class="element-title-svg block w-full max-h-[21vw] [text-anchor:middle] [font-size:216px] max-md:max-h-[22.5vw]">
@@ -645,7 +650,7 @@
 											class='picture-overlay relative w-full h-full cursor-pointer bg-cover bg-[50%] bg-no-repeat overflow-hidden after:bg-[linear-gradient(120deg,rgba(255,255,255,0),rgba(255,255,255,0)_49%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,0.3)_60%,rgba(255,255,255,0.2)_65%,rgba(255,255,255,0.1)_75%,rgba(255,255,255,0)_76%,rgba(255,255,255,0))] after:content-[""] after:absolute max-md:after:hidden after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-overlay after:translate-x-full after:opacity-1' 
 											></div>
 									</div>
-									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 [transition:opacity_1000ms_ease-out_1500ms,transform_1000ms_ease-out_1500ms] opacity-100 translate-y-0">
+									<div class="division-elements flex flex-nowrap justify-center items-end content-center absolute top-[50%] left-[50%] w-[50vw] h-[50vh] mt-[-25vh] ml-[-25vw] px-[3vw] z-[1] max-md:w-[60vw] max-md:h-[60vh] max-md:mt-[-30vh] max-md:ml-[-30vw] max-md:p-0 opacity-100 translate-y-0">
 										<div class="relative block w-full pointer-events-none [transform:translate3d(0,42%,0)] max-md:absolute max-md:w-[70vw]">
 											<span class="element-title text-white [text-align:center] relative flex justify-center rotate-[-5deg] [filter:drop-shadow(-1px_-1px_0px_transparent)_drop-shadow(4px_4px_0px_transparent)_drop-shadow(-1px_1px_0px_transparent)_drop-shadow(1px_1px_0px_transparent)] [transition:all_.35s_ease-out_0s]">
 												<svg width="810" height="260" viewBox="0 0 810 260" class="element-title-svg block w-full max-h-[21vw] [text-anchor:middle] [font-size:216px] max-md:max-h-[22.5vw] ">
