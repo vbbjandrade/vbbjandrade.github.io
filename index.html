@@ -12,8 +12,8 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Vinícius Andrade • Developer</title>
 			<script type="text/javascript" src="./libs/CustomEase.min.js" defer></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/Draggable.min.js"></script>
+			<script id="gsapScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js" defer></script>
+			<script id="draggableScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/Draggable.min.js" defer></script>
 			<script src="https://cdn.tailwindcss.com"></script>
 			<style>
 				@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
@@ -865,11 +865,21 @@
 				></div>
 			</div> -->
 			<script type="text/javascript">
-				const mobileAndTabletCheck = function() {
-					let check = false;
-					(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
-					return check;
-				};
+				const gsapScript = document.getElementById("gsapScript");
+				const draggableScript = document.getElementById("draggableScript");
+
+				gsapScript.addEventListener('load', () => {
+					gsapLoaded = true;
+					if (draggableLoaded === true) startInteraction();
+				});
+
+				draggableScript.addEventListener('load', () => {
+					draggableLoaded = true;
+					if (gsapLoaded === true) startInteraction();
+				});
+
+				let gsapLoaded = false;
+				let draggableLoaded = false;
 
 				const html = document.querySelector("html");
 				const cssRoot = document.querySelector(":root");
@@ -883,10 +893,6 @@
 				const yearsOld = document.getElementById("yearsOld")
 				const codingFor = document.getElementById("codingFor");
 				const burgerMenu = document.getElementById("burgerMenu");
-
-				bgText.textContent = `portfolio ${new Date().getUTCFullYear()}`
-				yearsOld.textContent = `${new Date().getUTCFullYear() - 2000}`
-				codingFor.textContent = `${new Date().getUTCFullYear() - 2017} years`
 
 				let cursorX = 0,
 						cursorY = 0,
@@ -911,8 +917,6 @@
 						closestDOM = document.querySelector("[data-division-active]"),
 						dragProgress = document.querySelector("#progressBar");
 
-				cssRoot.style.setProperty('--divisions', divisions.length)
-
 				const setGridSize = () => {
 					gridWidth = document.querySelector('.division').clientWidth;
 					divisions.forEach((element, index) => {
@@ -920,84 +924,142 @@
 					});
 				}
 
-				setGridSize()
+				function throttle (callback, limit) {
+					var waiting = false;
+					return function () {
+						if (!waiting) {
+							callback.apply(this, arguments);
+							waiting = true;
+							setTimeout(function () {
+									waiting = false;
+							}, limit);
+						}
+					}
+				};
 
-				gsap.config({
-					force3D: true
-				});
+				function debounce(func, wait, immediate) {
+					var timeout;
+					return function() {
+						var context = this, args = arguments;
+						var later = function() {
+							timeout = null;
+							if (!immediate) func.apply(context, args);
+						};
+						var callNow = immediate && !timeout;
+						clearTimeout(timeout);
+						timeout = setTimeout(later, wait);
+						if (callNow) func.apply(context, args);
+					};
+				};
 
-				if (mobileAndTabletCheck()) {
-					html.dataset.cursorDisabled = true
-				} else {
-					root.addEventListener("mouseenter", () => html.dataset.cursorDisabled = false);
-					root.addEventListener("mouseleave", () => html.dataset.cursorDisabled = true);
+				
+				function sliderProgress() {
+					var dragProgressX = -gridWidth * (closestIndex);
+					var currentIndex = closestIndex;
+					var progress = -dragProgressX / (gridWidth * (divisions.length-1));
+					TweenLite.to(dragProgress, 0.65,{
+						scaleX: progress,
+						force3D: !0,
+						ease: "expo.out"
+					})
 				}
 
-					function throttle (callback, limit) {
-							var waiting = false;
-							return function () {
-									if (!waiting) {
-											callback.apply(this, arguments);
-											waiting = true;
-											setTimeout(function () {
-													waiting = false;
-											}, limit);
-									}
+				function deselectDivision() {
+					[...document.querySelectorAll('[data-division-selected="true"]')].forEach(e => e.dataset.divisionSelected = "false");
+					draggable[0].enable();	
+				}
+
+				function cursorEnter(text) {
+					html.dataset.cursorHovering = "true";
+					cssRoot.style.setProperty('--cursorText', `"${text}"`);
+				}
+
+				function cursorLeave() {
+					cssRoot.style.setProperty('--cursorText', "''");
+					html.dataset.cursorHovering = "false";
+				}
+
+				function animateCursor() {
+					let distX1 = cursorX - circleX
+					let distY1 = cursorY - circleY
+					let distX2 = cursorX - ballX
+					let distY2 = cursorY - ballY
+					let distX4 = cursorX - textX
+					let distY4 = cursorY - textY
+					circleX = circleX + (distX1 * speedCircle)
+					circleY = circleY + (distY1 * speedCircle)  
+					ballX = ballX + (distX2 * speedBall)
+					ballY = ballY + (distY2 * speedBall)  
+					textX = textX + (distX4 * speedText)
+					textY = textY + (distY4 * speedText)  
+					TweenLite.to(circle, 0, { x:circleX, y:circleY })
+					TweenLite.to(ball, 0, { x:ballX, y:ballY })
+					TweenLite.to(text, 0, { x:textX, y:textY })
+					requestAnimationFrame(animateCursor)
+				}
+
+				function selectDivision(index) {
+					burgerMenu.click();
+					calcClosest(index);
+					gsap.to(draggable[0].target, {
+						onStart: () => sliderProgress(),
+						duration: .65,
+						ease: "power2.inOut",
+						x: closest*-1,
+						onComplete: () => draggable[0].update()
+					});
+					setTimeout(() => divisions[index].querySelector('.picture-link').click(), 300);
+				}
+
+				function calcClosest(indexOverride){
+					if (indexOverride != null) {
+						var prevClosest = closest;
+						var activeDOM = document.querySelector("[data-division-active]");
+						closest = indexOverride * gridWidth;
+					} else {
+						translateStyle = ((((divisionSlider.style.transform)).slice(11)).split(",", 1)[0]).replace(/[^\d-.]/g, '');
+						translateX = +translateStyle.replace(/[^\d.]/g, '');
+						var prevClosest = closest;
+						var activeDOM = document.querySelector("[data-division-active]");
+						closest = divisionCenter.reduce(function(prev, curr, idx) {
+							var compCres = Math.abs(curr - translateX + 0.25*gridWidth) < Math.abs(prev - translateX);
+							var compDecr = Math.abs(curr - translateX - 0.25*gridWidth) < Math.abs(prev - translateX);
+							if (prevClosest > translateX){
+								return (compCres ? curr : prev);
+							} else {
+								return (compDecr ? curr : prev);
 							}
+						}, 0);
+					}
+					closestIndex = divisionCenter.indexOf(closest);
+					closestDOM = divisions[closestIndex];
+					delete activeDOM.dataset.divisionActive;
+					closestDOM.dataset.divisionActive = true;
+					document.title = `Vinícius Andrade • ${closestDOM.querySelector(".element-subtitle").textContent}`;
+				}
+
+				const startInteraction = function() {
+					const mobileAndTabletCheck = function() {
+						let check = false;
+						(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+						return check;
 					};
 
-					function debounce(func, wait, immediate) {
-							var timeout;
-							return function() {
-									var context = this, args = arguments;
-									var later = function() {
-											timeout = null;
-											if (!immediate) func.apply(context, args);
-									};
-									var callNow = immediate && !timeout;
-									clearTimeout(timeout);
-									timeout = setTimeout(later, wait);
-									if (callNow) func.apply(context, args);
-							};
-					};
+					bgText.textContent = `portfolio ${new Date().getUTCFullYear()}`
+					yearsOld.textContent = `${new Date().getUTCFullYear() - 2000}`
+					codingFor.textContent = `${new Date().getUTCFullYear() - 2017} years`
 
-					function sliderProgress() {
-							var dragProgressX = -gridWidth * (closestIndex);
-							var currentIndex = closestIndex;
-							var progress = -dragProgressX / (gridWidth * (divisions.length-1));
-							TweenLite.to(dragProgress, 0.65,{
-									scaleX: progress,
-									force3D: !0,
-									ease: "expo.out"
-							})
-					}
+					cssRoot.style.setProperty('--divisions', divisions.length)
 
-					function selectDivision(index) {
-						burgerMenu.click();
-						calcClosest(index);
-						gsap.to(draggable[0].target, {
-							onStart: () => sliderProgress(),
-							duration: .65,
-							ease: "power2.inOut",
-							x: closest*-1,
-							onComplete: () => draggable[0].update()
-						});
-						setTimeout(() => divisions[index].querySelector('.picture-link').click(), 300);
-					}
+					setGridSize()
 
-					function deselectDivision() {
-						[...document.querySelectorAll('[data-division-selected="true"]')].forEach(e => e.dataset.divisionSelected = "false");
-						draggable[0].enable();	
-					}
+					gsap.config({ force3D: true });
 
-					function cursorEnter(text) {
-						html.dataset.cursorHovering = "true";
-						cssRoot.style.setProperty('--cursorText', `"${text}"`);
-					}
-
-					function cursorLeave() {
-						cssRoot.style.setProperty('--cursorText', "''");
-						html.dataset.cursorHovering = "false";
+					if (mobileAndTabletCheck()) {
+						html.dataset.cursorDisabled = true
+					} else {
+						root.addEventListener("mouseenter", () => html.dataset.cursorDisabled = false);
+						root.addEventListener("mouseleave", () => html.dataset.cursorDisabled = true);
 					}
 
 					divisionSlider.addEventListener("mouseover", function(event){
@@ -1046,33 +1108,6 @@
 						}
 					});
 
-					function animateCursor() {
-							let distX1 = cursorX - circleX
-							let distY1 = cursorY - circleY
-							let distX2 = cursorX - ballX
-							let distY2 = cursorY - ballY
-							let distX4 = cursorX - textX
-							let distY4 = cursorY - textY
-							circleX = circleX + (distX1 * speedCircle)
-							circleY = circleY + (distY1 * speedCircle)  
-							ballX = ballX + (distX2 * speedBall)
-							ballY = ballY + (distY2 * speedBall)  
-							textX = textX + (distX4 * speedText)
-							textY = textY + (distY4 * speedText)  
-							TweenLite.to(circle, 0, {
-									x:circleX,
-									y:circleY,
-							})
-							TweenLite.to(ball, 0, {
-									x:ballX,
-									y:ballY,
-							})
-							TweenLite.to(text, 0, {
-									x:textX,
-									y:textY,
-							})
-							requestAnimationFrame(animateCursor)
-					}
 					requestAnimationFrame(animateCursor);
 					//REQUESTANIMATIONFRAME MAKES THE FUNCTION RECURSIVE, AND MUST BE USED FOR REPETITIVE ANIMATIONS TO RUN MORE EFFICIENTLY (BOTH FOR PERFORMANCE AND BATTERY SAVING)
 
@@ -1093,7 +1128,7 @@
 							yPercent:-50
 					});
 
-					var draggable = Draggable.create("#divisionSlider", {
+					window.draggable = Draggable.create("#divisionSlider", {
 							type:"x, y",
 							bounds:"#sliderContainer",
 							dragResistance: -0.99,
@@ -1124,33 +1159,6 @@
 							}
 					});
 
-					function calcClosest(indexOverride){
-						if (indexOverride != null) {
-							var prevClosest = closest;
-							var activeDOM = document.querySelector("[data-division-active]");
-							closest = indexOverride * gridWidth;
-						} else {
-							translateStyle = ((((divisionSlider.style.transform)).slice(11)).split(",", 1)[0]).replace(/[^\d-.]/g, '');
-							translateX = +translateStyle.replace(/[^\d.]/g, '');
-							var prevClosest = closest;
-							var activeDOM = document.querySelector("[data-division-active]");
-							closest = divisionCenter.reduce(function(prev, curr, idx) {
-								var compCres = Math.abs(curr - translateX + 0.25*gridWidth) < Math.abs(prev - translateX);
-								var compDecr = Math.abs(curr - translateX - 0.25*gridWidth) < Math.abs(prev - translateX);
-								if (prevClosest > translateX){
-									return (compCres ? curr : prev);
-								} else {
-									return (compDecr ? curr : prev);
-								}
-							}, 0);
-						}
-						closestIndex = divisionCenter.indexOf(closest);
-						closestDOM = divisions[closestIndex];
-						delete activeDOM.dataset.divisionActive;
-						closestDOM.dataset.divisionActive = true;
-						document.title = `Vinícius Andrade • ${closestDOM.querySelector(".element-subtitle").textContent}`;
-					}
-
 					const throttledScrollPanel = throttle(function(event){
 							event.preventDefault();
 							if (!draggable[0].enabled()) return;
@@ -1164,16 +1172,16 @@
 										x: closest*-1,
 										onComplete: () => draggable[0].update()
 									});
-							} else if (event.deltaY > 0 && closestIndex < (divisions.length - 1)){
+							} else if (event.deltaY > 0 && closestIndex < (divisions.length - 1)) {
 								var closestScroll = divisions.indexOf(closestDOM)+1;
 								calcClosest(closestScroll);
 								gsap.to(draggable[0].target,  {
-								onStart: () => sliderProgress(),
-								duration: .65,
-								ease:  "power2.inOut",
-								x: closest*-1,
-								onComplete: () => draggable[0].update()
-							});
+									onStart: () => sliderProgress(),
+									duration: .65,
+									ease:  "power2.inOut",
+									x: closest*-1,
+									onComplete: () => draggable[0].update()
+								});
 							}
 					}, 650);
 
@@ -1189,6 +1197,7 @@
 
 					window.addEventListener('resize', debouncedResize);
 					content.addEventListener("wheel", throttledScrollPanel);
+				}
 			</script>
 
 	</body>
