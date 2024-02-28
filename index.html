@@ -409,6 +409,7 @@
 											<div class='w-full h-full overflow-auto scroll-smooth'>
 												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
 													<button 
+														aria-label="back"
 														onmouseenter="cursorEnter('')"
 														onmouseleave="cursorLeave()"
 														onclick="deselectDivision()"
@@ -552,6 +553,7 @@
 											<div class='w-full h-full overflow-auto scroll-smooth'>
 												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
 													<button 
+														aria-label="back"
 														onmouseenter="cursorEnter('')"
 														onmouseleave="cursorLeave()"
 														onclick="deselectDivision()"
@@ -703,6 +705,7 @@
 											<div class='w-full h-full overflow-auto scroll-smooth'>
 												<div class="absolute px-[7.5vw] pt-[20px] max-sm:px-[20px] w-full z-[1] pointer-events-none">
 													<button 
+														aria-label="back"
 														onmouseenter="cursorEnter('')"
 														onmouseleave="cursorLeave()"
 														onclick="deselectDivision()"
@@ -739,23 +742,23 @@
 
 															<div class="flex flex-col gap-[10px] items-start w-full">
 																<label for="name">What's your name?</label>
-																<div class="relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
+																<div class="max-w-[1000px] relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
 																	<input required class="transition-all outline-none bg-white relative z-[1] w-full py-[5%] pl-[8%] pr-[18%]" type="text" name="name" placeholder="John Doe *" />
 																	<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
 																</div>
 															</div>
 
 															<div class="flex flex-col gap-[10px] items-start  w-full">
-																<label for="name">What's your email?</label>
-																<div class="relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
+																<label for="email">What's your email?</label>
+																<div class="max-w-[1000px] relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
 																	<input required class="transition-all outline-none bg-white relative z-[1] w-full py-[5%] pl-[8%] pr-[18%]" type="email" name="email" placeholder="john@doe.com *" />
 																	<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
 																</div>
 															</div>
 
 															<div class="flex flex-col gap-[10px] items-start w-full">
-																<label for="name">Your message</label>
-																<div class="relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
+																<label for="message">Your message</label>
+																<div class="max-w-[1000px] relative w-full transition-all [&>*]:[clip-path:polygon(6%_8%,88%_6%,85%_88%,3%_88%)] [filter:drop-shadow(8px_8px_0px_#000)] [&:has(>input:focus)]:[filter:drop-shadow(0px_0px_0px_#000)]">
 																	<input required class="transition-all outline-none bg-white relative z-[1] w-full py-[5%] pl-[8%] pr-[18%]" name="message" placeholder="Hello Vinícius, can you help me with ... *" />
 																	<div class="absolute left-[-4px] top-[-4px] w-[calc(100%_+_8px)] h-[calc(100%_+_8px)] bg-black"></div>
 																</div>
