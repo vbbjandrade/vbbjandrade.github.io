@@ -360,13 +360,16 @@
 									</label>
 									<ul class='[&>li>a]:transition-transform fixed inset-0 bg-[#c9171e] translate-y-full [transition:transform_cubic-bezier(0.4,0,0.2,1)_300ms] flex flex-col gap-[15px] justify-center items-center pt-[15px]'>
 										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(0)">
-											<a style="--order: 3;" class="inline-flex w-full h-full origin-right" href="#aboutContent">About</a>
+											<a style="--order: 4;" class="inline-flex w-full h-full origin-right" href="#aboutContent">About</a>
 										</li>
 										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(1)">
-											<a style="--order: 2;" class="inline-flex w-full h-full origin-right" href="#workContent">Work</a>
+											<a style="--order: 3;" class="inline-flex w-full h-full origin-right" href="#workContent">Work</a>
 										</li>
 										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(2)">
-											<a style="--order: 1;" class="inline-flex w-full h-full origin-right" href="#contactContent">Contact</a>
+											<a style="--order: 2;" class="inline-flex w-full h-full origin-right" href="#contactContent">Contact</a>
+										</li>
+										<li class='overflow-hidden text-white text-[2.2rem] font-["MADEOuterSans"] origin-right' onclick="selectDivision(3)">
+											<a style="--order: 1;" class="inline-flex w-full h-full origin-right" href="#blogContent">Articles</a>
 										</li>
 										<li class="mt-[20px]">
 												<a 
@@ -1090,12 +1093,12 @@
 				}
 
 				function mouseEnter() {
-					if (mobileAndTabletCheck) return;
+					if (mobileAndTabletCheck()) return;
 					html.dataset.cursorDisabled = false
 				}
 
 					function mouseLeave() {
-						if (mobileAndTabletCheck) return;
+						if (mobileAndTabletCheck()) return;
 						html.dataset.cursorDisabled = true
 					}
 
